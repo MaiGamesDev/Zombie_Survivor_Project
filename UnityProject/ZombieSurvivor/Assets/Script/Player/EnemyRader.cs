@@ -21,13 +21,4 @@ public class EnemyRader : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            weapon01.target = null;
-        }
-
-    }
 }

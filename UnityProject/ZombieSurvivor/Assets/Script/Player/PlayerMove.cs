@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerCarSpriteTemplate spriteList;
+
     private Rigidbody2D rigidbody;
+    private SpriteRenderer spriteRenderer;
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -21,11 +25,12 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -66,7 +71,6 @@ public class PlayerMove : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-
     }
 
     private void PlayerRotation()
@@ -74,44 +78,52 @@ public class PlayerMove : MonoBehaviour
         // 좌측 회전
         if (h == 1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 0);
+            spriteRenderer.sprite = spriteList.left;
+            //transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         // 우측 회전
         else if (h == -1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, -180);
+            spriteRenderer.sprite = spriteList.right;
+            //transform.localEulerAngles = new Vector3(0, 0, -180);
         }
 
         // 상단 회전
         if (v == 1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 90);
+            spriteRenderer.sprite = spriteList.top;
+            //transform.localEulerAngles = new Vector3(0, 0, 90);
         }
         // 하단 회전
         else if (v == -1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, -90);
+            spriteRenderer.sprite = spriteList.bottom;
+            //transform.localEulerAngles = new Vector3(0, 0, -90);
         }
 
         // 좌상단 회전
         if (h == -1 && v == 1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 135);
+            spriteRenderer.sprite = spriteList.leftTop;
+            //transform.localEulerAngles = new Vector3(0, 0, 135);
         }
         // 우상단 회전
         else if (h == 1 && v == 1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 45);
+            spriteRenderer.sprite = spriteList.rightTop;
+            //transform.localEulerAngles = new Vector3(0, 0, 45);
         }
         // 좌하단 회전
         else if (h == -1 && v == -1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, -135);
+            spriteRenderer.sprite = spriteList.leftbottom;
+            //transform.localEulerAngles = new Vector3(0, 0, -135);
         }
         // 우하단 회전
         else if (h == 1 && v == -1)
         {
-            transform.localEulerAngles = new Vector3(0, 0, -45);
+            spriteRenderer.sprite = spriteList.rightBottom;
+            //transform.localEulerAngles = new Vector3(0, 0, -45);
         }
 
     }

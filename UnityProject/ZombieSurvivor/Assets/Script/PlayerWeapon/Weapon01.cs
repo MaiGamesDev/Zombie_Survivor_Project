@@ -31,7 +31,7 @@ public class Weapon01 : MonoBehaviour
         currentTime += Time.deltaTime;
         if(currentTime > attackDelay)
         {
-            SpawnBullet();
+            //SpawnBullet();
         }
 
 
@@ -48,7 +48,6 @@ public class Weapon01 : MonoBehaviour
 
     private void WeaponRotation()
     {
-        Debug.Log(target);
         if(target != null)
         {
             Vector3 dir = target.transform.position - transform.position;
